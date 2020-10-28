@@ -86,6 +86,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Kyle Chancellor Van Buren',
+    date: 'October 28th, 2020',
+    firstParagraph: 'This is the first paragraph',
+    secondParagraph: 'This is the second paragraph',
+    thirdParagraph: 'This is the second paragraph',
   }
 ];
 
@@ -114,3 +121,73 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+/*
+Array Object
+{
+  title:
+  date:
+  firstParagraph:
+  secondParagraph:
+  thirdParagraph:
+}
+*/
+
+/* 
+<div class="article">
+  <h2>{title of the article}</h2>
+  <p class="date">{date of the article}</p>
+
+  {three separate paragraph elements}
+
+  <span class="expandButton">+</span>
+</div> */
+
+function articleComponentMaker(data) {
+
+  const articleDiv = document.createElement('div')
+    articleDiv.classList.add('article')
+
+  const articleHeader = document.createElement('h2')
+    articleHeader.textContent = data.title
+
+  const articlePDate = document.createElement('p')
+    articlePDate.classList.add('date')
+    articlePDate.textContent = data.date
+
+  const articleP1 = document.createElement('p')
+    articleP1.textContent = data.firstParagraph
+
+  const articleP2 = document.createElement('p')
+    articleP2.textContent = data.secondParagraph
+
+  const articleP3 = document.createElement('p')
+    articleP3.textContent = data.thirdParagraph
+
+  const articleSpan = document.createElement('span')
+    articleSpan.classList.add('expandButton')
+    articleSpan.textContent = '+'
+
+
+  articleDiv.appendChild(articleHeader)
+  articleDiv.appendChild(articlePDate)
+  articleDiv.appendChild(articleP1)
+  articleDiv.appendChild(articleP2)
+  articleDiv.appendChild(articleP3)
+  articleDiv.appendChild(articleSpan)
+
+
+  articleSpan.addEventListener('click', event => {
+    articleDiv.classList.toggle('article-open')
+  })
+  
+  return articleDiv
+
+}
+
+const article = document.querySelector('.articles');
+
+data.forEach((articleObj) => {
+  const articleComponent = articleComponentMaker(articleObj);
+  article.appendChild(articleComponent)
+})
