@@ -187,7 +187,7 @@ function articleComponentMaker(data) {
 
 const article = document.querySelector('.articles');
 
-data.forEach((articleObj) => {
+data.forEach((articleObj) =>{
   const articleComponent = articleComponentMaker(articleObj);
   article.appendChild(articleComponent)
 })

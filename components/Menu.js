@@ -36,7 +36,7 @@ let menuItems = [
 
 function menuMaker(menuItems) {
 
-  const menuDiv = document.createElement('div');
+  const menuDiv=document.createElement('div');
     menuDiv.classList.add('menu');
 
   const menuUL = document.createElement('ul');
